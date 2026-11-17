@@ -22,3 +22,7 @@ Implemented a search function using the mid-square hash function. The search ope
 ## Commit 7 – Final Testing and Validation
 
 Performed final testing of the hash table program. Verified that all 20 personalized dataset values were successfully found using the search function. Also tested the search function with 9999, a value not present in the dataset. The program correctly reported that the value was not found. Both search tests passed successfully.
+
+## Failed Approach – Incorrect Mid-Square Digit Extraction
+
+I initially tried using substr(0, 2) to extract two digits from the squared key. However, this extracted the first two digits instead of the middle two digits. For example, for key 29, the square was 0841, and the incorrect extraction gave 08 instead of 84. This produced incorrect hash table positions. I rejected this approach and restored substr(1, 2), which correctly extracts the middle two digits. After restoring it, the program worked with the intended hash function.
