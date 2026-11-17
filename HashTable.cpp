@@ -45,6 +45,19 @@ void insertKey(int key) {
     hashTable[index].push_back(key);
 }
 
+// Search for a key in the hash table
+bool searchKey(int key) {
+    int index = midSquareHash(key);
+
+    for (int value : hashTable[index]) {
+        if (value == key) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 // Display Hash Table
 void displayTable() {
     cout << "\nFinal Hash Table:\n";
@@ -77,6 +90,19 @@ int main() {
     }
 
     displayTable();
+    cout << "\nSearching and Verifying Values:\n";
+
+int foundCount = 0;
+
+for (int i = 0; i < DATA_SIZE; i++) {
+    if (searchKey(marks[i])) {
+        foundCount++;
+    }
+}
+
+cout << "Total values found: "
+     << foundCount << "/" << DATA_SIZE << endl;
+     
     cout << "\nTotal Collisions: "
      << collisionCount << endl;
 
