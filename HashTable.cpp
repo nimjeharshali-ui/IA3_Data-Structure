@@ -102,7 +102,15 @@ for (int i = 0; i < DATA_SIZE; i++) {
 
 cout << "Total values found: "
      << foundCount << "/" << DATA_SIZE << endl;
-     
+
+     int testKey = 9999;
+
+if (searchKey(testKey))
+    cout << "Unexpected: Value found!" << endl;
+else
+    cout << "Search test passed: " << testKey
+         << " not found." << endl;
+
     cout << "\nTotal Collisions: "
      << collisionCount << endl;
 

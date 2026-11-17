@@ -18,3 +18,7 @@ Added collision detection to the insertion function. Before inserting a value, t
 
 ## Commit 6 – Search and Verification
 Implemented a search function using the mid-square hash function. The search operation calculates the bucket index and searches for the required key within that bucket. Tested all 20 personalized values and successfully verified that every value was found.
+
+## Commit 7 – Final Testing and Validation
+
+Performed final testing of the hash table program. Verified that all 20 personalized dataset values were successfully found using the search function. Also tested the search function with 9999, a value not present in the dataset. The program correctly reported that the value was not found. Both search tests passed successfully.
