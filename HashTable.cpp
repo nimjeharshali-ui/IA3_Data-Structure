@@ -3,11 +3,6 @@
 #include <vector>
 using namespace std;
 
-// PRN: 202501100029
-// Scenario: Student Marks
-// Hash Function: Mid-Square
-// Collision Handling: Separate Chaining
-
 const int DATA_SIZE = 20;
 const int TABLE_SIZE = 17;
 
@@ -18,32 +13,41 @@ int marks[DATA_SIZE] = {
     24, 37, 50, 63, 76
 };
 
+vector<int> hashTable[TABLE_SIZE];
+
 // Mid-Square Hash Function
 int midSquareHash(int key) {
     int square = key * key;
-    string squareStr = to_string(square);
+    string s = to_string(square);
 
-    while (squareStr.length() < 4) {
-        squareStr = "0" + squareStr;
+    while (s.length() < 4) {
+        s = "0" + s;
     }
 
-    int middleDigits = stoi(squareStr.substr(1, 2));
+    int middle = stoi(s.substr(1, 2));
 
-    return middleDigits % TABLE_SIZE;
+    return middle % TABLE_SIZE;
 }
 
-// Hash table using separate chaining
-vector<int> hashTable[TABLE_SIZE];
+// Insert using Separate Chaining
+void insertKey(int key) {
+    int index = midSquareHash(key);
+    hashTable[index].push_back(key);
+}
 
-// Display empty hash table
+// Display Hash Table
 void displayTable() {
-    cout << "\nHash Table Structure:\n";
+    cout << "\nFinal Hash Table:\n";
 
     for (int i = 0; i < TABLE_SIZE; i++) {
         cout << i << " : ";
 
-        if (hashTable[i].empty()) {
-            cout << "Empty";
+        for (int j = 0; j < hashTable[i].size(); j++) {
+            cout << hashTable[i][j];
+
+            if (j != hashTable[i].size() - 1) {
+                cout << " -> ";
+            }
         }
 
         cout << endl;
@@ -52,20 +56,14 @@ void displayTable() {
 
 int main() {
 
-    cout << "STUDENT MARKS HASH TABLE PROJECT\n";
+    cout << "STUDENT MARKS HASH TABLE\n";
     cout << "PRN: 202501100029\n";
 
-    cout << "\nPersonalized Dataset:\n";
+    cout << "\nInserting values:\n";
 
     for (int i = 0; i < DATA_SIZE; i++) {
-        cout << marks[i] << " ";
-    }
-
-    cout << "\n\nMid-Square Hash Values:\n";
-
-    for (int i = 0; i < DATA_SIZE; i++) {
-        cout << marks[i] << " -> "
-             << midSquareHash(marks[i]) << endl;
+        insertKey(marks[i]);
+        cout << "Inserted: " << marks[i] << endl;
     }
 
     displayTable();

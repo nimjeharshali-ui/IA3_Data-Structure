@@ -9,3 +9,6 @@ I implemented the Mid-Square hash function by squaring each key, extracting the 
 
 ## Commit 3 – Hash Table Structure
 Created the hash table structure using an array of vectors. Each index represents a bucket that can store multiple values, supporting the separate chaining collision resolution technique. Added a display function to show all 17 buckets. Compiled and tested the program successfully.
+
+## Commit 4 – Insertion Using Separate Chaining
+Implemented the insertion operation using the mid-square hash function. Each student mark was assigned to its calculated bucket. When multiple values mapped to the same index, they were stored together using a vector, preserving the insertion order. Tested the program with all 20 values.
