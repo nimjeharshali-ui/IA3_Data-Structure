@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 // PRN: 202501100029
@@ -8,7 +9,7 @@ using namespace std;
 // Collision Handling: Separate Chaining
 
 const int DATA_SIZE = 20;
-const int TABLE_SIZE = 17; // Chosen table size
+const int TABLE_SIZE = 17;
 
 int marks[DATA_SIZE] = {
     29, 42, 55, 68, 81,
@@ -20,7 +21,6 @@ int marks[DATA_SIZE] = {
 // Mid-Square Hash Function
 int midSquareHash(int key) {
     int square = key * key;
-
     string squareStr = to_string(square);
 
     while (squareStr.length() < 4) {
@@ -30,6 +30,24 @@ int midSquareHash(int key) {
     int middleDigits = stoi(squareStr.substr(1, 2));
 
     return middleDigits % TABLE_SIZE;
+}
+
+// Hash table using separate chaining
+vector<int> hashTable[TABLE_SIZE];
+
+// Display empty hash table
+void displayTable() {
+    cout << "\nHash Table Structure:\n";
+
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        cout << i << " : ";
+
+        if (hashTable[i].empty()) {
+            cout << "Empty";
+        }
+
+        cout << endl;
+    }
 }
 
 int main() {
@@ -50,8 +68,7 @@ int main() {
              << midSquareHash(marks[i]) << endl;
     }
 
-    cout << "\nTotal values: " << DATA_SIZE << endl;
-    cout << "Hash Table Size: " << TABLE_SIZE << endl;
+    displayTable();
 
     return 0;
 }
