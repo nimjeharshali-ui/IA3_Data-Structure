@@ -12,3 +12,6 @@ Created the hash table structure using an array of vectors. Each index represent
 
 ## Commit 4 – Insertion Using Separate Chaining
 Implemented the insertion operation using the mid-square hash function. Each student mark was assigned to its calculated bucket. When multiple values mapped to the same index, they were stored together using a vector, preserving the insertion order. Tested the program with all 20 values.
+
+## Commit 5 – Collision Detection
+Added collision detection to the insertion function. Before inserting a value, the program checks whether the calculated bucket is already occupied. If occupied, it records and displays a collision. The program successfully identified collisions while preserving all values using separate chaining.

@@ -14,6 +14,7 @@ int marks[DATA_SIZE] = {
 };
 
 vector<int> hashTable[TABLE_SIZE];
+int collisionCount = 0;
 
 // Mid-Square Hash Function
 int midSquareHash(int key) {
@@ -32,6 +33,15 @@ int midSquareHash(int key) {
 // Insert using Separate Chaining
 void insertKey(int key) {
     int index = midSquareHash(key);
+
+    if (!hashTable[index].empty()) {
+        collisionCount++;
+
+        cout << "Collision detected: "
+             << key << " at index "
+             << index << endl;
+    }
+
     hashTable[index].push_back(key);
 }
 
@@ -67,6 +77,8 @@ int main() {
     }
 
     displayTable();
+    cout << "\nTotal Collisions: "
+     << collisionCount << endl;
 
     return 0;
 }
